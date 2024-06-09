@@ -29,7 +29,7 @@ const WeatherCard = ({ forecast }) => {
         alt="weather icon"
         style={{ margin: "10px 0" }}
       />
-      <Typography variant="h5">{main.temp}°C</Typography>
+      <Typography variant="h5">{Number(main.temp.toFixed(1))}°C</Typography>
       <Typography
         variant="subtitle2"
         style={{ textTransform: "capitalize" }}>

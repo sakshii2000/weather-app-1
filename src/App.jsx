@@ -300,7 +300,7 @@ const App = () => {
           />
           <Today
             value={new Date(
-              currentWeather.sys.sunset * 1000
+              currentWeather.sys.sunrise * 1000
             ).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit"
@@ -311,7 +311,7 @@ const App = () => {
           />
           <Today
             value={new Date(
-              currentWeather.sys.sunrise * 1000
+              currentWeather.sys.sunset * 1000
             ).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit"
