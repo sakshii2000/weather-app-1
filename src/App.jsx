@@ -106,26 +106,35 @@ const App = () => {
   return (
     <Container
       style={{
-        padding: "2rem 4.5rem 6rem 4.5rem",
         marginLeft: "auto",
         marginRight: "auto",
         maxWidth: "100%"
+      }}
+      sx={{
+        padding: {
+          xs: "1.5rem",
+          sm: "2rem 4.5rem 6rem 4.5rem"
+        }
       }}>
       {/* Navigation bar */}
       <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        my={2}>
+        my={2}
+        flexDirection={{ xs: "column", sm: "row" }}
+        textAlign={{ xs: "center", sm: "left" }}>
         <Typography
           variant="h5"
-          component="div">
+          component="div"
+          mb={{ xs: 2, sm: 0 }}>
           <WbSunnyIcon style={{ verticalAlign: "middle", marginRight: 8 }} />{" "}
           weather
         </Typography>
         <Box
           display="flex"
-          alignItems="center">
+          alignItems="center"
+          width={{ xs: "100%", sm: "auto" }}>
           <TextField
             variant="outlined"
             placeholder="Search city"
@@ -146,7 +155,8 @@ const App = () => {
           <IconButton
             color="primary"
             onClick={handleSearch}
-            style={{ marginLeft: "10px" }}>
+            style={{ marginLeft: "10px" }}
+            sx={{ marginLeft: { xs: 1, sm: 2 } }}>
             <SearchIcon />
           </IconButton>
         </Box>
@@ -181,21 +191,36 @@ const App = () => {
               display="flex"
               alignItems="center"
               justifyContent="center"
-              height={255}>
+              sx={{
+                height: { xs: 150, md: 255 }
+              }}>
               <img
                 src={`https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`}
                 alt="image"
-                style={{ color: "primary.main" }}
+                style={{
+                  color: "primary.main"
+                }}
               />
             </Box>
-            <Typography variant="h3">{currentWeather.main.temp}°C</Typography>
+            <Typography
+              variant="h3"
+              sx={{ textAlign: { xs: "center", md: "left" } }}>
+              {currentWeather.main.temp}°C
+            </Typography>
             <Typography
               variant="h6"
-              gutterBottom>
+              gutterBottom
+              sx={{ textAlign: { xs: "center", md: "left" } }}>
               {currentWeather.weather[0].main}
             </Typography>
-            <Typography variant="subtitle1">{currentWeather.name}</Typography>
-            <Typography variant="subtitle2">
+            <Typography
+              variant="subtitle1"
+              sx={{ textAlign: { xs: "center", md: "left" } }}>
+              {currentWeather.name}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              sx={{ textAlign: { xs: "center", md: "left" } }}>
               {new Date().toDateString()}
             </Typography>
           </Paper>
@@ -208,15 +233,38 @@ const App = () => {
           xs={12}
           md={8}
           lg={9}
-          maxHeight={460}>
+          sx={{
+            height: {
+              xs: "300px",
+              md: "460px"
+            }
+          }}>
           <Paper
             elevation={3}
             style={{
-              padding: "20px",
               borderRadius: 15,
               height: "100%"
+            }}
+            sx={{
+              padding: {
+                xs: "5px",
+                md: "20px"
+              }
             }}>
-            <Line data={getChartData()} />
+            <Box style={{ position: "relative", height: "100%" }}>
+              <Line
+                data={getChartData()}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  elements: {
+                    line: {
+                      tension: 0.4
+                    }
+                  }
+                }}
+              />
+            </Box>
           </Paper>
         </Grid>
 

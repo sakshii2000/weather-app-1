@@ -22,16 +22,20 @@ function Today({ value, unit, name, icon_name }) {
     <Grid
       item
       xs={12}
-      md={2}>
+      sm={6}
+      md={4}
+      lg={2}>
       <Paper
         elevation={3}
         style={{
           padding: "20px",
-          borderRadius: 15
+          borderRadius: 15,
+          textAlign: { xs: "center", md: "left" }
         }}>
         <Box
           display="flex"
-          alignItems="center">
+          alignItems="center"
+          justifyContent={{ xs: "center", md: "start" }}>
           <IconComonent
             fontSize="large"
             style={{ marginRight: 8 }}
@@ -42,7 +46,13 @@ function Today({ value, unit, name, icon_name }) {
             {value} {unit}
           </Typography>
         </Box>
-        <Typography variant="body2">{name}</Typography>
+        <Typography
+          variant="body2"
+          sx={{
+            textAlign: { xs: "center", md: "left" }
+          }}>
+          {name}
+        </Typography>
       </Paper>
     </Grid>
   );
