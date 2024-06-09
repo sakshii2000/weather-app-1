@@ -68,7 +68,7 @@ const App = () => {
   };
 
   const get24HourForecast = () => {
-    return forecast.list.slice(0, 8);
+    return forecast.list.slice(1, 9);
   };
 
   const getChartData = () => {
