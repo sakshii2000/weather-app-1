@@ -205,7 +205,7 @@ const App = () => {
             <Typography
               variant="h3"
               sx={{ textAlign: { xs: "center", md: "left" } }}>
-              {currentWeather.main.temp}°C
+              {Number(currentWeather.main.temp.toFixed(1))}°C
             </Typography>
             <Typography
               variant="h6"
